@@ -1,13 +1,10 @@
-# pe_infector
-PE Infector/Cryptor source code
+# PEZEncrypt
+A simple x86 PE packer
 
-From April 2011
-
-http://www.codereversing.com/blog/archives/86
-
-http://www.codereversing.com/blog/archives/92
-
-http://www.codereversing.com/blog/archives/94
-
-http://www.codereversing.com/blog/archives/95
-
+## Features
+* Easy and Simple
+* Using SEH to detect hardware breakpoint
+* Using SetUnhandledExceptionFilter to detect debugger
+* Stub code checksum
+* Using VirtualProtect to disable memory breakpoint
+* Many small tricks to obfuscate the code

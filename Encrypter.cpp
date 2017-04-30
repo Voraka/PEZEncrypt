@@ -9,7 +9,7 @@ void encrypt_file(PIMAGE_NT_HEADERS nt_headers, pfile_info target_file, const ch
         for(int j = 0; j < sizeof(excluded_sections)/sizeof(excluded_sections[0]); ++j)
             excluded &= strcmp(excluded_sections[j], (char *)current_section->Name);
         if(excluded != 0) {
-            unsigned char *section_start = 
+            unsigned char *section_start =
                 (unsigned char *)target_file->file_mem_buffer + current_section->PointerToRawData;
             unsigned char *section_end = section_start + current_section->SizeOfRawData;
             const unsigned int num_rounds = 32;
@@ -38,8 +38,8 @@ void encrypt(unsigned int num_rounds, unsigned int blocks[2], unsigned int const
         blocks[1] += (((blocks[0] << 4) ^ (blocks[0] >> 5)) + blocks[0]) ^ (sum + key[(sum >> 11) & 3]);
     }
 }
- 
-//Unused, kept for testing/verification
+
+//For debug use
 void decrypt(unsigned int num_rounds, unsigned int blocks[2], unsigned int const key[4]) {
     const unsigned int delta = 0x9E3779B9;
     unsigned int sum = delta * num_rounds;

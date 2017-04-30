@@ -84,7 +84,7 @@ PIMAGE_SECTION_HEADER add_section(const char *section_name, unsigned int section
     PIMAGE_SECTION_HEADER last_section = IMAGE_FIRST_SECTION(nt_headers) + (nt_headers->FileHeader.NumberOfSections - 1);
     PIMAGE_SECTION_HEADER new_section = IMAGE_FIRST_SECTION(nt_headers) + (nt_headers->FileHeader.NumberOfSections);
     memset(new_section, 0, sizeof(IMAGE_SECTION_HEADER));
-    new_section->Characteristics = IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_CNT_CODE;
+    new_section->Characteristics = IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_WRITE;
     memcpy(new_section->Name, section_name, name_max_length);
     new_section->Misc.VirtualSize = section_size;
     new_section->PointerToRawData = align_to_boundary(last_section->PointerToRawData + last_section->SizeOfRawData,
